@@ -11,6 +11,7 @@ on:
 jobs:
   PC_Application_Ubuntu:
     runs-on: ubuntu-22.04
+    # runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
 
@@ -41,13 +42,13 @@ jobs:
           make -j9
         shell: bash
 
-      # - name: Upload artifact
-      #   env: 
-      #     LIBREVNA_VERSION: "${{steps.id_version.outputs.app_version}}"
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: LibreVNA-GUI-Ubuntu-${{env.LIBREVNA_VERSION}}
-      #     path: Software/PC_Application/LibreVNA-GUI/LibreVNA-GUI
+      - name: Upload artifact
+        env: 
+          LIBREVNA_VERSION: "${{steps.id_version.outputs.app_version}}"
+        uses: actions/upload-artifact@v3
+        with:
+          name: LibreVNA-GUI-Ubuntu-${{env.LIBREVNA_VERSION}}
+          path: Software/PC_Application/LibreVNA-GUI/LibreVNA-GUI
           
   # PC_Application_Windows:
   #   runs-on: windows-2019

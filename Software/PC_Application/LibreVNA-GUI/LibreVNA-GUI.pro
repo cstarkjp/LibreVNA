@@ -308,8 +308,9 @@ SOURCES += \
 LIBS += -lusb-1.0
 unix:LIBS += -L/usr/lib/
 win32:LIBS += -L"$$_PRO_FILE_PWD_" # Github actions placed libusb here
-osx:INCPATH += /usr/local/include
-osx:LIBS += -L/usr/local/lib $(shell pkg-config --libs libusb-1.0)
+#osx:INCPATH += /usr/local/include $(shell pkg-config --cflags libusb-1.0)  ../$(shell pkg-config --cflags libusb-1.0)  
+osx:INCPATH += /usr/local/include /opt/homebrew/Cellar/libusb/1.0.27/include /opt/homebrew/Cellar/libusb/1.0.27/include/libusb-1.0
+osx:LIBS += -L/usr/local/lib $(shell pkg-config --libs libusb-1.0)  
 
 QT += widgets network
 
